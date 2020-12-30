@@ -1,9 +1,11 @@
+import MainScene from './mainScene'
+
 const config = {
-  width: 500,
-  height: 500,
+  width: 750,
+  height: 300,
   backgroundColor: '#333333',
-  type: phaser.AUTO,
-  parent: 'game',
+  type: Phaser.AUTO,
+  parent: 'index',
   scale: {
     zoom: 2,
   },
@@ -16,6 +18,8 @@ const config = {
     }
   },
 
-  scene: []
+  scene: [ MainScene ]
 
 }
+
+export { config as default }
