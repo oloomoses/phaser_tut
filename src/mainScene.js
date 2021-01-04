@@ -9,10 +9,12 @@ class MainScene extends Phaser.Scene {
 
   create(){
     console.log('create')
-    this.cat = this.physics.add.sprite(10, 10, 'cat-like');
-    this.cat.body.setAllowGravity(false);
-    this.cat.setScale(0.2);
-    this.catSpeed = 300;
+    this.player = new Phaser.Physics.Matter.Sprite(this.matter.world,0,0,'cat-like')
+    this.add.existing(this.player);
+    // const trapDoor = this.matter.add.sprite(200, 0, "door");
+    // this.cat.body.setAllowGravity(false);
+    this.player.setScale(0.2);
+    this.speed = 5;
     this.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
@@ -36,8 +38,8 @@ class MainScene extends Phaser.Scene {
       velocity.y = 1
     }
 
-    velocity.scale(this.catSpeed);
-    this.cat.setVelocity(velocity.x, velocity.y)
+    velocity.scale(this.speed);
+    this.player.setVelocity(velocity.x, velocity.y)
   }
 }
 

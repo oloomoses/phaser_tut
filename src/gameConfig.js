@@ -1,4 +1,5 @@
 import MainScene from './mainScene'
+import PhaserMatterCollisionPlugin from "phaser-matter-collision-plugin";
 
 const config = {
   width: 750,
@@ -11,14 +12,23 @@ const config = {
   },
 
   physics: {
-    default: 'arcade',
-    arcade: {
+    default: 'matter',
+    matter: {
       debug: true,
       gravity: { y: 0 }
     }
   },
 
-  scene: [ MainScene ]
+  scene: [ MainScene ],
+  plugins: {
+    scene: [
+      {
+        plugin: PhaserMatterCollisionPlugin,
+        key: 'matterCollision',
+        mapping: 'matterCollision'
+      }
+    ]
+  }
 
 }
 
