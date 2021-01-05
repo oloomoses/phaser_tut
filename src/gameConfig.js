@@ -2,8 +2,8 @@ import MainScene from './mainScene'
 import PhaserMatterCollisionPlugin from "phaser-matter-collision-plugin";
 
 const config = {
-  width: 750,
-  height: 300,
+  width: 600,
+  height: 500,
   backgroundColor: '#333333',
   type: Phaser.AUTO,
   parent: 'index',

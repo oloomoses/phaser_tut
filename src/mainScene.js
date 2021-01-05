@@ -6,13 +6,22 @@ class MainScene extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('cat-like', 'assets/cat-like-creature.png')
+    this.load.image('cat-like', 'assets/cat-like-creature.png');
+    this.load.image('tiles', 'assets/road.png');
+    this.load.tilemapTiledJSON('map', 'assets/map.json');
   }
 
   create(){
-    console.log('create')
-    this.player = new Player({scene: this, x: 0, y: 0, sprite: 'cat-like'})
-  
+    const map = this.make.tilemap({ key: 'map' });
+    const tileset = map.addTilesetImage('road', 'tiles', 32, 32, 0, 0);
+    const layer1 = map.createLayer('Tile Layer 1', tileset, 0, 0)
+    const layer2 = map.createLayer('Tile Layer 2', tileset, 0, 0);
+
+    layer1.setCollisionByProperty({ collides: true });
+    this.matter.world.convertTilemapLayer(layer1);
+    this.player = new Player({scene: this, x: 100, y: 450, sprite: 'cat-like'})
+
+   
     // this.player.speed = 5;
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
